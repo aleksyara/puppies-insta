@@ -5,8 +5,7 @@ const BASE_URL = '/api/users/';
 function signup(user) {
   return fetch(BASE_URL + 'signup', {
     method: 'POST',
-    headers: new Headers({'Content-Type': 'application/json'}),
-    body: JSON.stringify(user)
+    body: user
   })
   .then(res => {
     if (res.ok) return res.json();
@@ -15,6 +14,8 @@ function signup(user) {
   })
   // Parameter destructuring!
   .then(({token}) => tokenService.setToken(token));
+  // Setting our token in localStorage in our browser
+  // then we'll be able to use with every request!
   // The above could have been written as
   //.then((token) => token.token);
 }
