@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import userService from '../../utils/userService';
+import { useHistory } from 'react-router-dom';
 
 
 export default function SignUpPage(props){
@@ -15,7 +16,9 @@ export default function SignUpPage(props){
     passwordConf: '',
     bio: ''
   });
-  
+
+  const history = useHistory()
+
   function handleChange(e){
     setState({
       ...state,
@@ -49,7 +52,11 @@ export default function SignUpPage(props){
     try {
       // refere to the utils/userService, to look at the signup fetch function
       await userService.signup(formData);
-
+      // setTheUser in our app
+      props.handleSignUpOrLogin() // gets the token from localstorage and updates the user state in our app.js
+      // with the correct user object from the current token
+      // then route to the homepage
+      history.push('/') // defined above from react-router-dom
       // after this we can go whereever
 
     } catch(err){
