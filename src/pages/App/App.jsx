@@ -4,6 +4,7 @@ import './App.css';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService'
+import Feed from '../Feed/Feed';
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
     <div className="App">
       <Switch>
           <Route exact path="/">
-              <h1>Home Page</h1>
+              <Feed />
           </Route>
           <Route exact path="/login">
              <LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>
