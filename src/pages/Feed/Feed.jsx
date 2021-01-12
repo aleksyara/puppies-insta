@@ -11,8 +11,16 @@ export default function Feed(props){
     async function handleAddPost(post){
 
         const data = await postsAPI.create(post);
+
+        // to check to make sure this is working
+        console.log(data, ' data')
         // after this we'll want to update state
         // after we get back our new post
+        // data is the response from our create function in controllers/posts
+        // update the state
+
+        setPosts([data.post,  ...posts])
+        // to conifrm this check the devtools for your feed component
         
     }
 
