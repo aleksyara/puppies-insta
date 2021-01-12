@@ -30,7 +30,7 @@ export default function LoginPage(props){
       try {
           await userService.login(state);
           // Route to wherever you want!
-          props.handleSignUpOrLogin()
+          props.handleSignUpOrLogin() // 
           history.push('/')
           
         } catch (err) {
