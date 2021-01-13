@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <Switch>
           <Route exact path="/">
-              <Feed />
+              <Feed user={user}/>
           </Route>
           <Route exact path="/login">
              <LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>

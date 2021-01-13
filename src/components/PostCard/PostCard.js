@@ -1,9 +1,33 @@
 import React from 'react';
+import { Card, Icon, Image } from 'semantic-ui-react'
 
-function PostCard(props) { 
+
+function PostCard({post, user}) { 
 
   return (
-    <div>I will render each post as a semantic ui card</div>
+    <Card key={post._id}>
+        <Card.Header textAlign='left'>
+            <Image
+                floated='left'
+                size='mini'
+                avatar
+                src={post.user.photoUrl ? post.user.photoUrl : 'https://react.semantic-ui.com/images/wireframe/square-image.png'}
+            />
+          <span floated="right">{post.user.username}</span>
+          </Card.Header>
+     
+      <Image src={`${post.photoUrl}`} wrapped ui={false} />
+      <Card.Content>
+      <Card.Description>
+        {post.caption}
+      </Card.Description>
+      </Card.Content>
+      <Card.Content extra textAlign={'right'}>
+        <Icon name={'heart'} size='large' color='grey'/>
+        {post.likes.length} Likes
+          
+      </Card.Content>
+    </Card>
   );
 }
 

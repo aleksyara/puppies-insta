@@ -1,8 +1,21 @@
 import React from 'react';
+import { Grid } from 'semantic-ui-react'
+import Post from '../PostCard/PostCard';
+
 
 export default function PostFeed(props){
 
     return (
-       <div>THIS IS THE POST FEED THAT WILL RENDER OUT EACH POST AS A CARD</div>
+        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+         <Grid.Column style={{ maxWidth: 450 }}>
+            <ul>
+                {props.posts.map((post) => {
+                return ( 
+                        <Post post={post} key={post._id} user={props.user}/>
+                    )
+                })}
+            </ul>
+        </Grid.Column>
+       </Grid>
     )
 }
