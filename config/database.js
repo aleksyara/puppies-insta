@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  'mongodb://localhost:27017/testagram',
+  'mongodb://localhost:27017/testagramV1',
   { useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
