@@ -1,17 +1,17 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react'
-import Post from '../PostCard/PostCard';
+import PostCard from '../PostCard/PostCard';
 
 
-export default function PostFeed(props){
+export default function PostFeed({posts}){
 
     return (
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
          <Grid.Column style={{ maxWidth: 450 }}>
             <ul>
-                {props.posts.map((post) => {
+                {posts.map((post) => {
                 return ( 
-                        <Post post={post} key={post._id} />
+                        <PostCard post={post} key={post._id} />
                     )
                 })}
             </ul>

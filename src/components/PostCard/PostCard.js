@@ -2,14 +2,14 @@ import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
 
 
-function PostCard({post, user}) { 
+function PostCard({post}) { 
 
   return (
     <Card key={post._id}>
         <Card.Header textAlign='left'>
             <Image
                 floated='left'
-                size='mini'
+                size='big'
                 avatar
                 src={post.user.photoUrl ? post.user.photoUrl : 'https://react.semantic-ui.com/images/wireframe/square-image.png'}
             />

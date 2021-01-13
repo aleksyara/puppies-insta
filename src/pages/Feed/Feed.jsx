@@ -4,7 +4,7 @@ import PostFeed from '../../components/PostFeed/PostFeed';
 import AddPostForm from '../../components/AddPostForm/AddPostForm';
 import * as postsAPI from '../../utils/postService';
 
-export default function Feed({user}){  
+export default function Feed(){  
 
     const [posts, setPosts] = useState([])
 
@@ -47,7 +47,7 @@ export default function Feed({user}){
         <>
         <PageHeader />
         <AddPostForm handleAddPost={handleAddPost}/>
-        <PostFeed posts={posts} user={user}/>
+        <PostFeed posts={posts} />
         </>
     )
 }
