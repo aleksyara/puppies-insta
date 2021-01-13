@@ -11,7 +11,7 @@ export default function PostFeed(props){
             <ul>
                 {props.posts.map((post) => {
                 return ( 
-                        <Post post={post} key={post._id} user={props.user}/>
+                        <Post post={post} key={post._id} />
                     )
                 })}
             </ul>

@@ -16,9 +16,8 @@ function create(req, res){
         s3.upload(params, async function(err, data){
                 // data.Location is the address where our image is stored on aws
             const post = await Post.create({caption: req.body.caption, user: req.user, photoUrl: data.Location});
-
-            console.log(post)
-            res.status(201).json({post: post})
+            const populatedUserPost = await post.populate('user').execPopulate();
+            res.status(201).json({post: populatedUserPost})
         })
 
 
