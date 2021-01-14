@@ -3,6 +3,7 @@ import PageHeader from '../../components/Header/Header';
 import PostFeed from '../../components/PostFeed/PostFeed';
 import AddPostForm from '../../components/AddPostForm/AddPostForm';
 import * as postsAPI from '../../utils/postService';
+import {  Grid } from 'semantic-ui-react'
 
 export default function Feed(){  
 
@@ -44,10 +45,23 @@ export default function Feed(){
 
 
     return (
-        <>
-        <PageHeader />
-        <AddPostForm handleAddPost={handleAddPost}/>
-        <PostFeed posts={posts} />
-        </>
+        
+      <Grid centered >
+        <Grid.Row>
+          <Grid.Column>
+            <PageHeader />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <AddPostForm handleAddPost={handleAddPost}/>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+        <Grid.Column style={{maxWidth: 450}}>
+          <PostFeed posts={posts} isProfile={false} numPhotosCol={1}/>
+        </Grid.Column>
+        </Grid.Row>
+      </Grid>
     )
 }

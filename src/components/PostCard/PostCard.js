@@ -1,21 +1,22 @@
 import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Feed } from 'semantic-ui-react'
 
 
-function PostCard({post}) { 
+function PostCard({post, isProfile}) { 
 
   return (
     <Card key={post._id}>
-        <Card.Header textAlign='left'>
+     {isProfile ? ''
+        :  <Card.Content textAlign='left'>
             <Image
                 floated='left'
-                size='big'
+                size='large'
                 avatar
                 src={post.user.photoUrl ? post.user.photoUrl : 'https://react.semantic-ui.com/images/wireframe/square-image.png'}
             />
-          <span floated="right">{post.user.username}</span>
-          </Card.Header>
-     
+          <Card.Header floated="right">{post.user.username}</Card.Header>
+          </Card.Content>
+      }
       <Image src={`${post.photoUrl}`} wrapped ui={false} />
       <Card.Content>
       <Card.Description>
@@ -23,7 +24,7 @@ function PostCard({post}) {
       </Card.Description>
       </Card.Content>
       <Card.Content extra textAlign={'right'}>
-        <Icon name={'heart'} size='large' color='grey'/>
+        <Icon name={'heart'} size='large' color={'grey'}/>
         {post.likes.length} Likes
           
       </Card.Content>
