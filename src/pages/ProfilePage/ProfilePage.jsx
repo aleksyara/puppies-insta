@@ -4,12 +4,13 @@ import userService from '../../utils/userService';
 import ProfileBio from '../../components/ProfileBio/ProfileBio';
 import PostFeed from '../../components/PostFeed/PostFeed';
 import PageHeader from '../../components/Header/Header';
-import { useLocation, useHistory } from 'react-router-dom';
+import * as likesAPI from '../../utils/likesService';
+import { useLocation } from 'react-router-dom';
 
 export default function ProfilePage() {
 
     const [posts, setPosts] = useState([])
-    const [user, setUser] = useState({})
+    const [profileUser, setProfileUser] = useState({})
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
 
@@ -28,14 +29,14 @@ export default function ProfilePage() {
             console.log(data)
             setLoading(() => false)
             setPosts(() => [...data.posts])
-            setUser(() => setUser(data.user))
+            setProfileUser(() => data.user)
         } catch (err) {
             console.log(err)
             setError(err)
         }
-
-
     }
+
+
 
     useEffect(() => {
         getProfile()
@@ -58,7 +59,7 @@ export default function ProfilePage() {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column>
-                            <ProfileBio user={user} />
+                            <ProfileBio user={profileUser} />
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row centered>

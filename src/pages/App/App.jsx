@@ -30,7 +30,7 @@ function App() {
              <SignupPage handleSignUpOrLogin={handleSignUpOrLogin}/>
           </Route>
           <Route path="/:username">
-            <ProfilePage />
+            <ProfilePage user={user}/>
           </Route>
       </Switch>
     </div>

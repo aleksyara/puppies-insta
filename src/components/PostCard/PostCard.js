@@ -4,6 +4,7 @@ import { Card, Icon, Image, Feed } from 'semantic-ui-react'
 
 function PostCard({post, isProfile}) { 
 
+
   return (
     <Card key={post._id}>
      {isProfile ? ''
@@ -24,7 +25,7 @@ function PostCard({post, isProfile}) {
       </Card.Description>
       </Card.Content>
       <Card.Content extra textAlign={'right'}>
-        <Icon name={'heart'} size='large' color={'grey'}/>
+        <Icon name={'heart'} size='large' color={'grey'}  />
         {post.likes.length} Likes
           
       </Card.Content>

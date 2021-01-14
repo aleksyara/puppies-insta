@@ -59,7 +59,7 @@ export default function Feed(){
         </Grid.Row>
         <Grid.Row>
         <Grid.Column style={{maxWidth: 450}}>
-          <PostFeed posts={posts} isProfile={false} numPhotosCol={1}/>
+          <PostFeed posts={posts} isProfile={false} numPhotosCol={1} />
         </Grid.Column>
         </Grid.Row>
       </Grid>
