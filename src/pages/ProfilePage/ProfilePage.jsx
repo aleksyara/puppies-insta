@@ -7,7 +7,7 @@ import PageHeader from '../../components/Header/Header';
 import * as likesAPI from '../../utils/likesService';
 import { useLocation } from 'react-router-dom';
 
-export default function ProfilePage() {
+export default function ProfilePage({user}) {
 
     const [posts, setPosts] = useState([])
     const [profileUser, setProfileUser] = useState({})
@@ -37,6 +37,25 @@ export default function ProfilePage() {
     }
 
 
+    async function addLike(postId){
+        try {
+          const data = await likesAPI.create(postId);
+          console.log(data, ' this is from addLike')
+          getProfile()
+        } catch(err){
+          console.log(err)
+        }
+      }
+    
+      async function removeLike(likeId){
+        try {
+          const data = await likesAPI.removeLike(likeId);
+          getProfile();
+        } catch(err){
+          console.log(err)
+        }
+      }
+
 
     useEffect(() => {
         getProfile()
@@ -64,7 +83,7 @@ export default function ProfilePage() {
                     </Grid.Row>
                     <Grid.Row centered>
                         <Grid.Column style={{ maxWidth: 750 }}>
-                            <PostFeed isProfile={true} posts={posts} numPhotosCol={3} />
+                            <PostFeed isProfile={true} posts={posts} numPhotosCol={3} addLike={addLike} removeLike={removeLike} user={user}/>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
