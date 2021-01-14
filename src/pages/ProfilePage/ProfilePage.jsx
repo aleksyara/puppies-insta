@@ -15,7 +15,7 @@ export default function ProfilePage() {
     const [error, setError] = useState('')
 
     const location = useLocation()
-
+    console.log(location)
 
     async function getProfile() {
 

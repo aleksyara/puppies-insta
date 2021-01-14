@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Icon, Image, Feed } from 'semantic-ui-react'
 
 
-function PostCard({post, isProfile}) { 
+function PostCard({post, isProfile, user, addLike, removeLike}) { 
 
 
   return (

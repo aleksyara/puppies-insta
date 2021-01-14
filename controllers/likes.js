@@ -9,8 +9,8 @@ async function create(req, res){
  
     try {
         const post = await Post.findById(req.params.id);
-        post.likes.push({username: req.user.username, userId: req.user._id});
-        await post.save()
+        post.likes.push({username: req.user.username, userId: req.user._id}); //mutating a document
+        await post.save()// save it
         res.status(201).json({data: 'like added'})
     } catch(err){
        
@@ -23,8 +23,8 @@ async function deleteLike(req, res){
     try {
         
         const post = await Post.findOne({'likes._id': req.params.id, 'likes.username': req.user.username});
-        post.likes.remove(req.params.id)
-        await post.save()
+        post.likes.remove(req.params.id) // mutating a document
+        await post.save() // after you mutate a document you must save
         res.json({data: 'like removed'})
     } catch(err){
         res.json({error: err})

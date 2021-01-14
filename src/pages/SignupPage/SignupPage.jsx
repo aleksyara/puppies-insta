@@ -18,7 +18,7 @@ export default function SignUpPage(props){
   });
 
   const history = useHistory()
-
+  
   function handleChange(e){
     setState({
       ...state,

@@ -3,9 +3,10 @@ import PageHeader from '../../components/Header/Header';
 import PostFeed from '../../components/PostFeed/PostFeed';
 import AddPostForm from '../../components/AddPostForm/AddPostForm';
 import * as postsAPI from '../../utils/postService';
+import * as likesAPI from '../../utils/likesService';
 import {  Grid } from 'semantic-ui-react'
 
-export default function Feed(){  
+export default function Feed({user}){  
 
     const [posts, setPosts] = useState([])
 
@@ -36,6 +37,25 @@ export default function Feed(){
         }
       }
 
+      async function addLike(postId){
+        try {
+          const data = await likesAPI.create(postId);
+          console.log(data, ' this is from addLike')
+          getPosts()
+        } catch(err){
+          console.log(err)
+        }
+      }
+    
+      async function removeLike(likeId){
+        try {
+          const data = await likesAPI.removeLike(likeId);
+          getPosts();
+        } catch(err){
+          console.log(err)
+        }
+      }
+
       useEffect(() => {
         getPosts()
       }, [])
@@ -59,7 +79,7 @@ export default function Feed(){
         </Grid.Row>
         <Grid.Row>
         <Grid.Column style={{maxWidth: 450}}>
-          <PostFeed posts={posts} isProfile={false} numPhotosCol={1} />
+          <PostFeed posts={posts} isProfile={false} numPhotosCol={1} user={user} addLike={addLike} removeLike={removeLike}/>
         </Grid.Column>
         </Grid.Row>
       </Grid>
