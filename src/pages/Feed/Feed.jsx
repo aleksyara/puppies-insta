@@ -6,7 +6,7 @@ import * as postsAPI from '../../utils/postService';
 import * as likesAPI from '../../utils/likesService';
 import {  Grid } from 'semantic-ui-react'
 
-export default function Feed({user}){  
+export default function Feed({user, handleLogout}){  
 
     const [posts, setPosts] = useState([])
 
@@ -69,7 +69,7 @@ export default function Feed({user}){
       <Grid centered >
         <Grid.Row>
           <Grid.Column>
-            <PageHeader />
+            <PageHeader user={user} handleLogout={handleLogout}/>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
