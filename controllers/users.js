@@ -22,7 +22,7 @@ function signup(req, res) {
 
   // FilePath unique name to be saved to our butckt
   const filePath = `${uuidv4()}/${req.file.originalname}`
-  const params = {Bucket: 'collectorcat', Key: filePath, Body: req.file.buffer};
+  const params = {Bucket: 'catcollectoraleksei', Key: filePath, Body: req.file.buffer};
   //your bucket name goes where collectorcat is 
   //////////////////////////////////////////////////////////////////////////////////
   s3.upload(params, async function(err, data){
